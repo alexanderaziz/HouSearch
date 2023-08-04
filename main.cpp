@@ -354,23 +354,25 @@ int main() {
         return 0;
     }
 
-    string state;
-    int numOfBeds;
-    double minPrice;
-    double maxPrice;
-    vector<double> prices;
-    vector<string> city;
-
-    houseSearch hou;
-    hou.readFile();
-
-    sf::Font font;
-    font.loadFromFile("data/font.ttf");
-
     bool program_running = true;
 
-
     while (program_running) {
+        string state;
+        int numOfBeds;
+        double minPrice;
+        double maxPrice;
+        vector<double> prices;
+        vector<string> city;
+
+        houseSearch hou;
+        hou.readFile();
+
+        sf::Font font;
+        font.loadFromFile("data/font.ttf");
+
+
+
+
         // items for sort Window
         sf::Text text("HouSearch", font, 80);
         text.setStyle(sf::Text::Bold);

@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -7,7 +6,7 @@
 #include <sstream>
 #include <chrono>
 
-
+// Definitions for sorting types
 #define LOW_TO_HIGH 0
 #define HIGH_TO_LOW 1
 
@@ -16,6 +15,7 @@
 
 using namespace std;
 
+// House struct to contain house info
 struct House {
     string _city;
     string _state;
@@ -25,6 +25,7 @@ struct House {
 
 vector<House> filteredData;
 
+// HouseSearch class that contains all methods for sorting and filtering data
 class houseSearch {
 private:
     vector<House> houseData;
@@ -50,6 +51,7 @@ public:
     void priceMergeSort(vector<double> &data, int sortType);
 };
 
+// Inputs data from .csv into the houseData vector
 void houseSearch::readFile() {
     ifstream inputFile("data/house.csv");
 
@@ -90,6 +92,7 @@ void houseSearch::readFile() {
     inputFile.close();
 }
 
+// Filters houseData based on criteria provided by the user. E.g. # of beds, price, state.
 vector<House> houseSearch::data(int numOfBeds, string state, double minValue, double maxValue) {
     vector<House> filteredData;
 
@@ -105,6 +108,7 @@ vector<House> houseSearch::data(int numOfBeds, string state, double minValue, do
     return filteredData;
 }
 
+// Quick sort partition function for sorting by city
 int houseSearch::cityPartition(vector<string> &data, int low, int high, int sortType) {
     string pivot = data[low];
     int up = low + 1;
@@ -143,6 +147,7 @@ int houseSearch::cityPartition(vector<string> &data, int low, int high, int sort
     }
 }
 
+// Quick sort implementation for sorting by city
 void houseSearch::cityQuickSort(vector<string> &data, int low, int high, int sortType) {
     if (low < high) {
         int pivot = cityPartition(data, low, high, sortType);
@@ -151,6 +156,7 @@ void houseSearch::cityQuickSort(vector<string> &data, int low, int high, int sor
     }
 }
 
+// Quick sort partition function for sorting by price
 int houseSearch::pricePartition(vector<double> &data, int low, int high, int sortType) {
     double pivot = data[low];
     int up = low + 1;
@@ -189,6 +195,7 @@ int houseSearch::pricePartition(vector<double> &data, int low, int high, int sor
     }
 }
 
+// Quick sort implementation for sorting by price
 void houseSearch::priceQuickSort(vector<double> &data, int low, int high, int sortType) {
     if (low < high) {
         int pivot = pricePartition(data, low, high, sortType);
@@ -197,6 +204,7 @@ void houseSearch::priceQuickSort(vector<double> &data, int low, int high, int so
     }
 }
 
+// Merge function for merge sorting by city
 void houseSearch::cityMerge(vector<string> &data, vector<string> &left, vector<string> &right, int sort_type) {
     int leftIndex = 0;
     int rightIndex = 0;
@@ -227,6 +235,7 @@ void houseSearch::cityMerge(vector<string> &data, vector<string> &left, vector<s
     }
 }
 
+// Merge sort implementation for sorting by city
 void houseSearch::cityMergeSort(vector<string> &data, int sort_type) {
     if (data.size() <= 1) {
         return;
@@ -242,6 +251,7 @@ void houseSearch::cityMergeSort(vector<string> &data, int sort_type) {
     cityMerge(data, left, right, sort_type);
 }
 
+// Merge function for merge sorting by price
 void houseSearch::priceMerge(vector<double> &data, vector<double> &left, vector<double> &right, int sort_type) {
     int leftIndex = 0;
     int rightIndex = 0;
@@ -272,6 +282,7 @@ void houseSearch::priceMerge(vector<double> &data, vector<double> &left, vector<
     }
 }
 
+// Merge sort implementation for sorting by price
 void houseSearch::priceMergeSort(vector<double> &data, int sort_type) {
     if (data.size() <= 1) {
         return;
@@ -287,6 +298,7 @@ void houseSearch::priceMergeSort(vector<double> &data, int sort_type) {
     priceMerge(data, left, right, sort_type);
 }
 
+// Creates the initial GUI, buttons, text, etc
 bool generate_start_window() {
 
     //Loads font from file

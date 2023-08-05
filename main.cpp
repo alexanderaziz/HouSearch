@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -825,24 +826,47 @@ int main() {
                         for (const auto &price: prices) {
                             for (const auto &house: filteredData) {
                                 if (house._value == price) {
-                                    sf::Text quickSortText("", font, 23);
-                                    quickSortText.setFillColor(sf::Color::Black);
-                                    std::stringstream ss;
-                                    ss << "- " << "City: " << house._city << ", Price: " << house._value;
-                                    quickSortText.setString(ss.str());
-                                    quickSortText.setPosition(620, 200 + yOffset);
-                                    sortWindow.draw(quickSortText);
 
-                                    sf::Text mergeSortText("", font, 23);
-                                    mergeSortText.setFillColor(sf::Color::Black);
-                                    std::stringstream sss;
-                                    sss << "- " << "City: " << house._city << ", Price: " << house._value;
-                                    mergeSortText.setString(sss.str());
-                                    mergeSortText.setPosition(10, 200 + yOffset);
-                                    sortWindow.draw(mergeSortText);
-                                    yOffset += mergeSortText.getLocalBounds().height + 3.f;
+                                    string house_city = house._city;
+                                    if(house_city.size() > 20){
+                                        house_city = house_city.substr(0,17) + "...";
+                                    }
+
+                                    sf::Text quickSortCityText("", font, 23);
+                                    quickSortCityText.setFillColor(sf::Color::Black);
+                                    std::stringstream ssc;
+                                    ssc <<  house_city;
+                                    quickSortCityText.setString(ssc.str());
+                                    quickSortCityText.setPosition(620, 200 + yOffset);
+                                    sortWindow.draw(quickSortCityText);
+
+                                    sf::Text quickSortValueText("", font, 23);
+                                    quickSortValueText.setFillColor(sf::Color::Black);
+                                    std::stringstream ssv;
+                                    ssv <<  "$" << static_cast<int>(house._value);
+                                    quickSortValueText.setString(ssv.str());
+                                    quickSortValueText.setPosition(920, 200 + yOffset);
+                                    sortWindow.draw(quickSortValueText);
+
+
+                                    sf::Text mergeSortCityText("", font, 23);
+                                    mergeSortCityText.setFillColor(sf::Color::Black);
+                                    std::stringstream sssc;
+                                    sssc <<  house_city;
+                                    mergeSortCityText.setString(sssc.str());
+                                    mergeSortCityText.setPosition(20, 200 + yOffset);
+                                    sortWindow.draw(mergeSortCityText);
+
+                                    sf::Text mergeSortValueText("", font, 23);
+                                    mergeSortValueText.setFillColor(sf::Color::Black);
+                                    std::stringstream sssv;
+                                    sssv <<  "$" << static_cast<int>(house._value);
+                                    mergeSortValueText.setString(sssv.str());
+                                    mergeSortValueText.setPosition(310, 200 + yOffset);
+                                    sortWindow.draw(mergeSortValueText);
+
+                                    yOffset += mergeSortCityText.getLocalBounds().height + 7.f;
                                     count++;
-
                                 }
                             }
                             if (count >= 28) {
@@ -883,22 +907,46 @@ int main() {
                         for (const auto &c: city) {
                             for (const auto &house: filteredData) {
                                 if (house._city == c) {
-                                    sf::Text quickSortText("", font, 23);
-                                    quickSortText.setFillColor(sf::Color::Black);
-                                    std::stringstream ss;
-                                    ss << "- " << "City: " << house._city << ", Price: " << house._value;
-                                    quickSortText.setString(ss.str());
-                                    quickSortText.setPosition(620, 200 + yOffset);
-                                    sortWindow.draw(quickSortText);
+                                    string house_city = house._city;
+                                    if(house_city.size() > 20){
+                                        house_city = house_city.substr(0,17) + "...";
+                                    }
 
-                                    sf::Text mergeSortText("", font, 23);
-                                    mergeSortText.setFillColor(sf::Color::Black);
-                                    std::stringstream sss;
-                                    sss << "- " << "City: " << house._city << ", Price: " << house._value;
-                                    mergeSortText.setString(sss.str());
-                                    mergeSortText.setPosition(10, 200 + yOffset);
-                                    sortWindow.draw(mergeSortText);
-                                    yOffset += mergeSortText.getLocalBounds().height + 3.f;
+                                    sf::Text quickSortCityText("", font, 23);
+                                    quickSortCityText.setFillColor(sf::Color::Black);
+                                    std::stringstream ssc;
+                                    ssc <<  house_city;
+                                    quickSortCityText.setString(ssc.str());
+                                    quickSortCityText.setPosition(620, 200 + yOffset);
+                                    sortWindow.draw(quickSortCityText);
+
+                                    sf::Text quickSortValueText("", font, 23);
+                                    quickSortValueText.setFillColor(sf::Color::Black);
+                                    std::stringstream ssv;
+                                    ssv <<  "$" << static_cast<int>(house._value);
+                                    quickSortValueText.setString(ssv.str());
+                                    quickSortValueText.setPosition(920, 200 + yOffset);
+                                    sortWindow.draw(quickSortValueText);
+
+
+
+                                    sf::Text mergeSortCityText("", font, 23);
+                                    mergeSortCityText.setFillColor(sf::Color::Black);
+                                    std::stringstream sssc;
+                                    sssc <<  house_city;
+                                    mergeSortCityText.setString(sssc.str());
+                                    mergeSortCityText.setPosition(20, 200 + yOffset);
+                                    sortWindow.draw(mergeSortCityText);
+
+                                    sf::Text mergeSortValueText("", font, 23);
+                                    mergeSortValueText.setFillColor(sf::Color::Black);
+                                    std::stringstream sssv;
+                                    sssv <<  "$" << static_cast<int>(house._value);
+                                    mergeSortValueText.setString(sssv.str());
+                                    mergeSortValueText.setPosition(310, 200 + yOffset);
+                                    sortWindow.draw(mergeSortValueText);
+
+                                    yOffset += mergeSortCityText.getLocalBounds().height + 7.f;
                                     count++;
                                 }
                             }

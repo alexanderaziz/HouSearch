@@ -865,7 +865,7 @@ int main() {
                                     mergeSortValueText.setPosition(310, 200 + yOffset);
                                     sortWindow.draw(mergeSortValueText);
 
-                                    yOffset += mergeSortCityText.getLocalBounds().height + 7.f;
+                                    yOffset += mergeSortCityText.getLocalBounds().height + 6.f;
                                     count++;
                                 }
                             }
@@ -946,7 +946,7 @@ int main() {
                                     mergeSortValueText.setPosition(310, 200 + yOffset);
                                     sortWindow.draw(mergeSortValueText);
 
-                                    yOffset += mergeSortCityText.getLocalBounds().height + 7.f;
+                                    yOffset += mergeSortCityText.getLocalBounds().height + 6.f;
                                     count++;
                                 }
                             }
